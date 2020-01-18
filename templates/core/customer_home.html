@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <div class="row">
+    <div class="col-md-8 col-sm-10 col-12">
+      <a href="{% url 'order-create' %}">My Cart</a>
+      <a href="{% url 'ordered-list' %}">My Orders</a>
+      <a href="{% url 'add-money' %}">Rs {{ wallet }}</a>
+      {% for item in items %}
+          <p>
+            {{ item.title }}
+            <img src="{{ item.image.url }}" height="50", width="50">
+            {{ item.price }}
+            {{ item.description }}
+            {{ item.vendor.user.username }}
+            {{ item.units_available }}
+            {{ item.sales }}
+            <a href="{% url 'order-item-create' item.pk %}">Add to Cart</a>
+            <a href="{% url 'wish_list' item.pk %}">Wish List</a>
+          </p>
+      {% endfor %}
+    </div>
+  </div>
+{% endblock %}

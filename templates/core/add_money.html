@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% load crispy_forms_tags %}
+
+{% block content %}
+  <div class="row">
+    <div class="col-md-8 col-sm-10 col-12">
+      <h2>Add Money to Wallet</h2>
+      <h5>Currently Rs {{ wallet }}</h5>
+      <form method="post">
+        {% csrf_token %}
+        {{ form|crispy }}
+        <button type="submit" class="btn btn-success">Add</button>
+      </form>
+    </div>
+  </div>
+{% endblock %}

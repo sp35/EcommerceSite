@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% block content %}
+	<ul>
+		<li>On: {{ order.order_datetime }}</li>
+		<li>By: {{ order.customer.user.username }}</li>
+		{% for order_item in order.order_items.all %}
+			<p>
+	            {{ order_item.item.title }}
+	            <img src="{{ order_item.item.image.url }}" height="50", width="50">
+	            {{ order_item.item.price }}
+	            {{ order_item.item.description }}
+	            {{ order_item.item.vendor.user.username }}
+	         </p>
+	    {% endfor %}
+{% endblock content %}
